@@ -1,0 +1,34 @@
+example.property: "I AM A PROD PROPERTY OVERRIDE"
+spring.jpa.database: "POSTGRESQL"
+spring.datasource.platform:  "postgres"
+spring.jpa.show-sql: "true"
+spring.database.driverClassName: "org.postgresql.Driver"
+spring.datasource.url: "jdbc:postgresql://database:5432/eagle_eye_prod"
+spring.datasource.username: "postgres_prod"
+spring.datasource.password: "{cipher}217b23d6209b10bd82c49a9df6490670052a9cd9d4403dcc1288db21c35c48ac"
+spring.datasource.testWhileIdle: "true"
+spring.datasource.validationQuery: "SELECT 1"
+spring.jpa.properties.hibernate.dialect: "org.hibernate.dialect.PostgreSQLDialect"
+redis.server: "redis"
+redis.port: "6379"
+signing.key: "345345fsdfsf5345"
+
+keycloak:
+  # turn off keycloak spring boot auto-configuration:
+  # We only want to use Spring Security without servlet container specific infrastructure
+  # This allows us to pull the Keycloak configuration from here instead of keycloak.json
+  enabled: false
+
+  realm: dev
+  auth-server-url: http://localhost:38080/auth
+  # The client_id
+  resource: organization-service
+  credentials:
+    # The client_secret
+    secret: 2efa31b6-e3b9-4a7b-bea8-8059119a6a83
+  #ssl-required: external
+  bearer-only: true
+  # Configures what principal.getName() will return
+  principal-attribute: preferred_username
+  use-resource-role-mappings: true
+  token-minimum-time-to-live: 30

@@ -1,0 +1,27 @@
+server:
+  port: 9080
+  
+example:
+  property: ciao
+
+spring:
+  application:
+    name: licensingservice
+  profiles:
+    active:
+      default
+  cloud:
+    config:
+      enabled: true
+  main:
+    allow-bean-definition-overriding: true
+    
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+      

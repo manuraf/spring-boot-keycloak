@@ -1,0 +1,33 @@
+spring.jpa.database: "POSTGRESQL"
+spring.datasource.platform:  "postgres"
+spring.jpa.show-sql: "false"
+spring.database.driverClassName: "org.postgresql.Driver"
+spring.datasource.url: "jdbc:postgresql://database:5432/eagle_eye_dev"
+spring.datasource.username: "postgres_dev"
+spring.datasource.password: "{cipher}d495ce8603af958b2526967648aa9620b7e834c4eaff66014aa805450736e119"
+spring.datasource.testWhileIdle: "true"
+spring.datasource.validationQuery: "SELECT 1"
+spring.jpa.properties.hibernate.dialect: "org.hibernate.dialect.PostgreSQLDialect"
+redis.server: "redis"
+redis.port: "6379"
+signing.key: "345345fsdfsf5345"
+
+keycloak:
+  # turn off keycloak spring boot auto-configuration:
+  # We only want to use Spring Security without servlet container specific infrastructure
+  # This allows us to pull the Keycloak configuration from here instead of keycloak.json
+  enabled: false
+
+  realm: dev
+  auth-server-url: http://localhost:38080/auth
+  # The client_id
+  resource: organization-service
+  credentials:
+    # The client_secret
+    secret: 2efa31b6-e3b9-4a7b-bea8-8059119a6a83
+  #ssl-required: external
+  bearer-only: true
+  # Configures what principal.getName() will return
+  principal-attribute: preferred_username
+  use-resource-role-mappings: true
+  token-minimum-time-to-live: 30
